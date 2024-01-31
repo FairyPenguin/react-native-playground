@@ -18,11 +18,13 @@ export default function FlexBox({ children, style }) {
 const styles = StyleSheet.create({
     flexContainer: {
         // flex: 1,
-        padding: 3,
+        // flexGrow: 1,
+        padding: 13,
         // backgroundColor: "white",
-        width: "auto",
-        height: "auto",
-        height: 66
+        // width: "auto",
+        // height: "auto",
+        width: 80,
+        height: 80
     },
     title: {
         fontSize: 16,

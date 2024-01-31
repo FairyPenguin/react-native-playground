@@ -10,19 +10,19 @@ export default function FlexContainer({ children }) {
 
         <View style={styles.flexContainer}>
             <FlexBox
-                style={{ backgroundColor: "#8e9b00", alignSelf: "stretch" }}>FBox Item 1</FlexBox>
+                style={{ backgroundColor: "#8e9b00", }}>FBox Item 1</FlexBox>
             <FlexBox
-                style={{ backgroundColor: "#1c4c56", alignSelf: "flex-start" }}>FBox Item 2</FlexBox>
+                style={{ backgroundColor: "#1c4c56", }}>FBox Item 2</FlexBox>
             <FlexBox
-                style={{ backgroundColor: "#b65d1f", alignSelf: "center" }}>FBox Item 3</FlexBox>
+                style={{ backgroundColor: "#b65d1f", }}>FBox Item 3</FlexBox>
             <FlexBox
-                style={{ backgroundColor: "pink", alignSelf: "center" }}>FBox Item 4</FlexBox>
+                style={{ backgroundColor: "pink", }}>FBox Item 4</FlexBox>
             <FlexBox
-                style={{ backgroundColor: "#6b0803", alignSelf: "flex-end" }}>FBox Item 5</FlexBox>
+                style={{ backgroundColor: "#6b0803", }}>FBox Item 5</FlexBox>
             <FlexBox
-                style={{ backgroundColor: "grey", alignSelf: "flex-end" }}>FBox Item 6</FlexBox>
+                style={{ backgroundColor: "grey", }}>FBox Item 6</FlexBox>
             <FlexBox
-                style={{ backgroundColor: "midnightblue", alignSelf: "flex-start" }}>FBox Item 7</FlexBox>
+                style={{ backgroundColor: "aqua", }}>FBox Item 7</FlexBox>
 
         </View>
     )
@@ -43,18 +43,32 @@ export default function FlexContainer({ children }) {
  horizontal wrapping avilable when flexDirection is "row"
 */
 
+/*
+Align-content
+*/
+/*
+ Flex-basis: alternative to the height and width 
+ properties in flex layouts
+*/
+
 const styles = StyleSheet.create({
     flexContainer: {
         // flex: 1,
-        flexWrap: "wrap",
-        height: 300,
+        // flexWrap: "wrap",
+        // flexGrow: 1,
+        // rowGap: 20,
+        // columnGap: 30,
+        gap: 5,
+        // alignContent: "space-around",
+        height: "auto",
         // justifyContent: "space-between",
-        // alignItems: "stretch",
-        // flexDirection: "row",
+        // alignItems: "flex-start",
+        // flexDirection: "column",
         marginTop: 20,
         marginBottom: 10,
         borderWidth: 6,
-        borderColor: "red"
+        borderColor: "red",
+        // width: 500
     },
     start: {
         alignSelf: "flex-start"

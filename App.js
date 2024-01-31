@@ -5,6 +5,7 @@ import BoxModel from "./components/Styling/BoxModel"
 import BoxShadow from "./components/Styling/BoxShadow"
 import StyleInheritance from "./components/Styling/StyleInheritance"
 import FlexContainer from "./components/Styling/FlexContainer"
+import Dynamic from "./components/DynamicUI/Dynamic"
 
 
 export default function App() {
@@ -13,7 +14,9 @@ export default function App() {
 
         <View style={{ backgroundColor: "#191919", marginTop: 33, flex: 1 }}>
 
-            <FlexContainer />
+
+            <Dynamic />
+            {/* <FlexContainer /> */}
 
             {/* <StyledComponent /> */}
 
