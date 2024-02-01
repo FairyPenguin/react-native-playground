@@ -6,7 +6,9 @@ import BoxShadow from "./components/Styling/BoxShadow"
 import StyleInheritance from "./components/Styling/StyleInheritance"
 import FlexContainer from "./components/Styling/FlexContainer"
 import Dynamic from "./components/DynamicUI/Dynamic"
-import SafeArea from "./components/DynamicUI/SafeAreaView"
+import PlatformCode from "./components/PlatformCode/PlatformCode"
+import AndroidButton from "./components/CustomButton/CustomButton.android";
+import IosButton from "./components/CustomButton/CustomButton.ios";
 
 
 export default function App() {
@@ -17,8 +19,9 @@ export default function App() {
 
 
             {/* <Dynamic /> */}
-            <SafeArea />
+            {/* <PlatformCode /> */}
 
+            <AndroidButton title={"Android"} />
             {/* <FlexContainer /> */}
 
             {/* <StyledComponent /> */}
