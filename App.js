@@ -1,40 +1,38 @@
-import { View, Text } from "react-native"
-import StyledComponent from "./components/StyledComponent"
-import MultipleStyles from "./components/Styling/MultipleStyles"
-import BoxModel from "./components/Styling/BoxModel"
-import BoxShadow from "./components/Styling/BoxShadow"
-import StyleInheritance from "./components/Styling/StyleInheritance"
-import FlexContainer from "./components/Styling/FlexContainer"
-import Dynamic from "./components/DynamicUI/Dynamic"
-import PlatformCode from "./components/PlatformCode/PlatformCode"
-import AndroidButton from "./components/CustomButton/CustomButton.android";
-import IosButton from "./components/CustomButton/CustomButton.ios";
+import { View, Text, SafeAreaView, StyleSheet, Platform } from "react-native"
+
+import PokemonCard from "./components/PokemonCard/PokemonCard";
 
 
 export default function App() {
 
+
+    const pokemonData = {
+        name: "Bulbasor",
+        image: require("./assets/004.png"),
+        type: "Earth",
+        hp: 39,
+        moves: ["1", "2", "3"],
+        weaknesses: ["Fire", "Water"]
+    }
+
     return (
-
-        <View style={{ backgroundColor: "#191919", marginTop: 33, flex: 1 }}>
-
-
-            {/* <Dynamic /> */}
-            {/* <PlatformCode /> */}
-
-            <AndroidButton title={"Android"} />
-            {/* <FlexContainer /> */}
-
-            {/* <StyledComponent /> */}
-
-            {/* <MultipleStyles /> */}
-
-            {/* <BoxModel /> */}
-
-            {/* <BoxShadow /> */}
-            {/* <StyleInheritance /> */}
-        </View>
+        <SafeAreaView style={styles.container}>
+            <PokemonCard  {...pokemonData} />
+        </SafeAreaView>
 
     )
-
-
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#f5f5f5",
+        paddingTop: Platform.OS === "android" ? 45 : 0,
+        paddingRight: 14,
+        paddingLeft: 14
+    },
+    title: {
+        fontSize: 33
+    }
+})
