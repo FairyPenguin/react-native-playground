@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, Platform } from "react-native"
+import { SafeAreaView, StyleSheet, ScrollView } from "react-native"
 
 import PokemonCard from "./components/PokemonCard/PokemonCard";
 
@@ -6,18 +6,49 @@ import PokemonCard from "./components/PokemonCard/PokemonCard";
 export default function App() {
 
 
-    const pokemonData = {
+    const bulbasorData = {
         name: "Bulbasor",
-        image: require("./assets/004.png"),
-        type: "Earth",
+        image: require("./assets/001.png"),
+        type: "grass",
         hp: 39,
         moves: ["1", "2", "3"],
         weaknesses: ["Fire", "Water"]
     }
+    const charmanderData = {
+        name: "charmander",
+        image: require("./assets/004.png"),
+        type: "fire",
+        hp: 59,
+        moves: ["1", "2", "3"],
+        weaknesses: ["rock", "Water"]
+    }
+    const caterpieData = {
+        name: "Bulbasor",
+        image: require("./assets/010.png"),
+        type: "grass",
+        hp: 100,
+        moves: ["1", "2", "3"],
+        weaknesses: ["Fire", "Water"]
+    }
+    const charizardData = {
+        name: "charizard",
+        image: require("./assets/006.png"),
+        type: "fire",
+        hp: 100,
+        moves: ["1", "2", "3"],
+        weaknesses: ["rock", "Water"]
+    }
 
     return (
         <SafeAreaView style={styles.container}>
-            <PokemonCard  {...pokemonData} />
+
+            <ScrollView>
+                <PokemonCard  {...bulbasorData} />
+                <PokemonCard  {...charmanderData} />
+                <PokemonCard  {...charizardData} />
+                <PokemonCard  {...caterpieData} />
+            </ScrollView>
+
         </SafeAreaView>
 
     )
