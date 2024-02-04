@@ -1,6 +1,8 @@
-import { SafeAreaView, StyleSheet, ScrollView } from "react-native"
+import { SafeAreaView, StyleSheet, ScrollView, } from "react-native"
 
 import PokemonCard from "./components/PokemonCard/PokemonCard";
+import List from "./components/List/List";
+import FList from "./components/FlatList/FList";
 
 
 export default function App() {
@@ -42,12 +44,16 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
 
-            <ScrollView>
+            {/* <ScrollView>
                 <PokemonCard  {...bulbasorData} />
                 <PokemonCard  {...charmanderData} />
                 <PokemonCard  {...charizardData} />
                 <PokemonCard  {...caterpieData} />
-            </ScrollView>
+            </ScrollView> */}
+
+            {/* <List /> */}
+
+            <FList />
 
         </SafeAreaView>
 

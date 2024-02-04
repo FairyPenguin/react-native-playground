@@ -1,26 +1,55 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, StatusBar } from "react-native"
 
-
-export default function NewComponent() {
+import IcecreamList from "../../Data/Icecream.json";
+export default function List() {
 
     return (
+        <SafeAreaView style={styles.flexContainer}>
 
-        <View>
-            <Text> React Native </Text>
-            <Text> Functional Component </Text>
+            <ScrollView style={styles.scrollView}>
+                {
+                    IcecreamList.flavors.map((flavor) => {
+                        return (
+                            <View
+                                style={styles.listItem}
+                                key={flavor.id}>
+                                <Text style={styles.listItemContent}>{flavor.flavorName}</Text>
+                                <Text style={styles.listItemContent}>{flavor.origin}</Text>
+                            </View>
+                        )
 
-        </View>
 
+                    })
+                }
+            </ScrollView>
+
+        </SafeAreaView>
     )
+
 }
 
 
 const styles = StyleSheet.create({
     flexContainer: {
-        flex: 0.6,
-        backgroundColor: "white"
+        flex: 1,
+        backgroundColor: "grey",
+        // alignItems: "center",
+        // justifyContent: "center",
+        paddingTop: StatusBar.currentHeight
     },
-    title: {
-        fontSize: 33
+    scrollView: {
+        paddingHorizontal: 16
+    },
+
+    listItem: {
+        backgroundColor: "white",
+        borderRadius: 8,
+        borderWidth: 1,
+        padding: 12,
+        marginBottom: 8
+    },
+
+    listItemContent: {
+        fontSize: 24
     }
 })
