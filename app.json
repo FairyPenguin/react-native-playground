@@ -4,12 +4,12 @@
     "slug": "AwesomeProject",
     "version": "1.2.0",
     "orientation": "portrait",
-    "icon": "./assets/495.png",
+    "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -17,8 +17,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#000"
       },
       "package": "com.mahmoudaz.biqala"
     },
