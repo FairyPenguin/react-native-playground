@@ -1,0 +1,18 @@
+[
+  {
+    "origign": "USA",
+    "data": ["Vanilla", "Mint Chocolate Chip", "Cookies and Cream"]
+  },
+  {
+    "origign": "Europe",
+    "data": ["Strawberry", "Lemon", "Hazelnut"]
+  },
+  {
+    "origign": "Asia",
+    "data": ["Ginger", "Mango", "Matcha Green Tea", "Pistachio"]
+  },
+  {
+    "origign": "Others",
+    "data": ["Coconut", "Tropical", "Coffee", "Chocolate"]
+  }
+]
