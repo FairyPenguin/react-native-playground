@@ -4,6 +4,7 @@ import PokemonCard from "./components/PokemonCard/PokemonCard";
 import List from "./components/List/List";
 import FList from "./components/FlatList/FList";
 import SList from "./components/SectionList/SList";
+import Input from "./components/Input/Input";
 
 
 export default function App() {
@@ -44,6 +45,8 @@ export default function App() {
 
     return (
         <SafeAreaView style={styles.container}>
+
+            <Input />
 
             {/* <ScrollView>
                 <PokemonCard  {...bulbasorData} />
