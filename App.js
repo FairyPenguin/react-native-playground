@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, ScrollView, } from "react-native"
 import PokemonCard from "./components/PokemonCard/PokemonCard";
 import List from "./components/List/List";
 import FList from "./components/FlatList/FList";
+import SList from "./components/SectionList/SList";
 
 
 export default function App() {
@@ -53,7 +54,9 @@ export default function App() {
 
             {/* <List /> */}
 
-            <FList />
+            {/* <FList /> */}
+
+            {/* <SList /> */}
 
         </SafeAreaView>
 

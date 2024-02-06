@@ -37,13 +37,7 @@ export default function FList() {
                                 }}
                             >No items found</Text>
                         </View>
-
-
-
-
                     }
-
-
 
                     renderItem={({ item }) => {
                         return (
