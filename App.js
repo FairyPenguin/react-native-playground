@@ -5,6 +5,7 @@ import List from "./components/List/List";
 import FList from "./components/FlatList/FList";
 import SList from "./components/SectionList/SList";
 import Input from "./components/Input/Input";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 
 export default function App() {
@@ -46,7 +47,9 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
 
-            <Input />
+            <LoginForm />
+
+            {/* <Input /> */}
 
             {/* <ScrollView>
                 <PokemonCard  {...bulbasorData} />

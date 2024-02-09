@@ -1,17 +1,26 @@
 import { useState } from "react"
 import {
     View, Text, StyleSheet,
-    StatusBar, SafeAreaView, TextInput
+    StatusBar, SafeAreaView, TextInput, Switch
 } from "react-native"
 
 export default function Input() {
 
     const [inputValue, setInputValue] = useState("")
+    const [darkMode, setDarkMode] = useState(false)
 
 
     return (
         <SafeAreaView style={styles.flexContainer}>
-
+            <View style={styles.switch}>
+                <Text style={styles.title}>Dark Mode</Text>
+                <Switch
+                    value={darkMode}
+                    onValueChange={() => setDarkMode((prevState) => !prevState)}
+                    trackColor={{ false: "blue", true: "green" }}
+                    thumbColor="grey"
+                />
+            </View>
             <Text> Input Field </Text>
             <TextInput
                 style={styles.input}
@@ -75,5 +84,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 24
+    }
+    ,
+    switch: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 10
     }
 })
