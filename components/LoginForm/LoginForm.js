@@ -9,6 +9,30 @@ import {
 export default function NewComponent() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState({})
+
+    function validateForm() {
+        let errors = {}
+        if (!username) {
+            errors.username = "username is required"
+        }
+        if (!password) {
+            errors.password = "password is required"
+        }
+
+        setErrors(errors)
+
+        return Object.keys(errors).length === 0
+    }
+
+    function handleSubmit() {
+        if (validateForm()) {
+            console.log("Submitted", username, password);
+            setPassword("")
+            setUsername("")
+            setErrors({})
+        }
+    }
 
     return (
         <KeyboardAvoidingView
@@ -28,6 +52,9 @@ export default function NewComponent() {
                     value={username}
                     onChangeText={setUsername}
                 />
+                {
+                    errors.username ? <Text style={styles.errorMessage}>{errors.username}</Text> : null
+                }
                 <Text style={styles.label}>Password</Text>
 
                 <TextInput
@@ -37,10 +64,12 @@ export default function NewComponent() {
                     value={password}
                     onChangeText={setPassword}
                 />
-
+                {
+                    errors.password ? <Text style={styles.errorMessage}>{errors.password}</Text> : null
+                }
                 <Button
                     title="Login"
-                    onPress={() => { }}
+                    onPress={() => { handleSubmit() }}
                 />
             </View>
         </KeyboardAvoidingView>
@@ -99,5 +128,9 @@ const styles = StyleSheet.create({
         height: 200
         , alignSelf: "center",
         marginBottom: 15
+    },
+    errorMessage: {
+        color: "red",
+        marginBottom: 5
     }
 })
