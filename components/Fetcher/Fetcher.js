@@ -10,21 +10,27 @@ export default function Fetcher() {
 
     const [posts, setPosts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [refresh, setRefresh] = useState(false)
 
     async function postsFetcher(limit = 5) {
-        const url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit}`
+        const url = `https://jsonplaceholder.typicode.com/posts?_limit=15`
 
         const response = await fetch(url)
-
         const Data = await response.json()
 
         console.log(Data);
         setPosts(Data)
         setIsLoading(false)
-
     }
 
     useEffect(() => { postsFetcher() }, [])
+
+    function handleRefresh() {
+        setRefresh(true)
+        postsFetcher(15)
+        setRefresh(false)
+    }
+
 
     if (isLoading) {
         return (
@@ -54,6 +60,8 @@ export default function Fetcher() {
                 ItemSeparatorComponent={() => (
                     <View style={{ height: 16 }}></View>
                 )}
+                refreshing={refresh}
+                onRefresh={handleRefresh}
             />
 
         </View>
@@ -65,7 +73,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "grey",
         paddingHorizontal: 16,
-        paddingTop: StatusBar.currentHeight
+        paddingTop: StatusBar.currentHeight,
+        paddingBottom: StatusBar.currentHeight
 
     },
     title: {
