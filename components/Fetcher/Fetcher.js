@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react"
-import { View, Text, StyleSheet, FlatList, StatusBar } from "react-native"
+import {
+    View, Text, StyleSheet,
+    FlatList, StatusBar, ActivityIndicator, SafeAreaView
+} from "react-native"
 
 
 
 export default function Fetcher() {
 
     const [posts, setPosts] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     async function postsFetcher(limit = 5) {
         const url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit}`
@@ -15,12 +19,21 @@ export default function Fetcher() {
         const Data = await response.json()
 
         console.log(Data);
-
         setPosts(Data)
+        setIsLoading(false)
 
     }
 
     useEffect(() => { postsFetcher() }, [])
+
+    if (isLoading) {
+        return (
+            <SafeAreaView style={styles.loadingContainer}>
+                <ActivityIndicator size={"large"} color={"blue"} />
+                <Text>Loading....</Text>
+            </SafeAreaView>
+        )
+    }
 
     return (
         <View style={styles.listContainer}>
@@ -72,5 +85,13 @@ const styles = StyleSheet.create({
     bodyText: {
         fontSize: 24,
         color: "#666666"
+    }
+    ,
+    loadingContainer: {
+        paddingTop: StatusBar.currentHeight,
+        flex: 1,
+        backgroundColor: "grey",
+        alignItems: "center",
+        justifyContent: "center"
     }
 })
