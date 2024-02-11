@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, ScrollView, } from "react-native"
+import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from "react-native"
 
 import PokemonCard from "./components/PokemonCard/PokemonCard";
 import List from "./components/List/List";
@@ -6,6 +6,7 @@ import FList from "./components/FlatList/FList";
 import SList from "./components/SectionList/SList";
 import Input from "./components/Input/Input";
 import LoginForm from "./components/LoginForm/LoginForm";
+import Fetcher from "./components/Fetcher/Fetcher";
 
 
 export default function App() {
@@ -47,7 +48,9 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
 
-            <LoginForm />
+            <Fetcher />
+
+            {/* <LoginForm /> */}
 
             {/* <Input /> */}
 
@@ -74,9 +77,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#f5f5f5",
-        paddingTop: Platform.OS === "android" ? 45 : 0,
-        paddingRight: 14,
-        paddingLeft: 14
+        paddingTop: StatusBar.currentHeight,
+        paddingRight: 9,
+        paddingLeft: 9
     },
     title: {
         fontSize: 33
