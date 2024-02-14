@@ -15,107 +15,139 @@ export default function Fetcher() {
     const [postTitle, setPostTitle] = useState("")
     const [postBody, setPostBody] = useState("")
     const [postingState, setpostingState] = useState(false)
+    const [errors, setErrors] = useState("")
+
+    useEffect(() => { postsFetcher() }, [])
 
 
+    async function postsFetcher(limit = 2) {
 
+        try {
+            const url = `https://jsonplaceholder.typicode.com/posts?_limit=${limit}`
 
-    async function postsFetcher(limit = 5) {
-        const url = `https://jsonplaceholder.typicode.com/posts?_limit=15`
+            const response = await fetch(url)
+            const Data = await response.json()
+            console.log(Data);
+            console.log("From Fetcher");
+            setPosts(Data)
+            setIsLoading(false)
+            setErrors("")
 
-        const response = await fetch(url)
-        const Data = await response.json()
-        console.log(Data);
-        setPosts(Data)
-        setIsLoading(false)
+        } catch (error) {
+            console.log("Error fetching data: => Error Message ==> :", error);
+            setIsLoading(false)
+            setErrors("Faild to fetch posts")
+        }
+
     }
 
 
 
     function handleRefresh() {
         setRefresh(true)
-        postsFetcher(15)
+        postsFetcher(10)
         setRefresh(false)
     }
 
 
+
+
     async function addPost() {
         setpostingState(true)
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-            body: JSON.stringify({
-                title: postTitle,
-                body: postBody,
-            }),
-        })
-        // New Post
-        const newPost = await response.json()
-        console.log(newPost);
-        setPosts([newPost, ...posts])
-        setPostTitle("")
-        setPostBody("")
-        setpostingState(false)
+
+        try {
+            const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+                body: JSON.stringify({
+                    title: postTitle,
+                    body: postBody,
+                }),
+            })
+            // New Post
+            const newPost = await response.json()
+            console.log(newPost);
+            setPosts([newPost, ...posts])
+            setPostTitle("")
+            setPostBody("")
+            setpostingState(false)
+            setErrors("")
+        } catch (error) {
+            console.log("Error posting: => Error Message ==> :", error);
+            setErrors("Error Posting")
+        }
+
     }
 
-    useEffect(() => { postsFetcher() }, [])
 
 
-    if (isLoading) {
-        return (
-            <SafeAreaView style={styles.loadingContainer}>
-                <ActivityIndicator size={"large"} color={"blue"} />
-                <Text>Loading....</Text>
-            </SafeAreaView>
-        )
-    }
+    // if (isLoading) {
+    //     return (
+    //         <SafeAreaView style={styles.loadingContainer}>
+    //             <ActivityIndicator size={"large"} color={"blue"} />
+    //             <Text>Loading....</Text>
+    //         </SafeAreaView>
+    //     )
+    // }
 
     return (
 
         <>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder="enter title"
-                    value={postTitle}
-                    onChangeText={setPostTitle}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="enter Body"
-                    value={postBody}
-                    onChangeText={setPostBody}
-                />
-                <Button
-                    title={postingState ? "Submiting..." : "Add New Post"}
-                    onPress={addPost}
-                    disabled={postingState}
-                />
-            </View>
-            <View style={styles.listContainer}>
 
-                <FlatList
-                    data={posts}
-                    renderItem={({ item }) => {
-                        return (
-                            <View style={styles.card}>
-                                <Text style={styles.id}>{item.id}</Text>
-                                <Text style={styles.titleText}>{item.title}</Text>
-                                <Text style={styles.bodyText}>{item.body}</Text>
-                            </View>
-                        )
-                    }}
-                    ListEmptyComponent={<Text>No Posts Avilable</Text>}
-                    ListHeaderComponent={<Text style={styles.title}>Posts List</Text>}
-                    ListFooterComponent={<Text style={styles.title}>End of posts list</Text>}
-                    ItemSeparatorComponent={() => (
-                        <View style={{ height: 16 }}></View>
-                    )}
-                    refreshing={refresh}
-                    onRefresh={handleRefresh}
-                />
-            </View>
+            {errors ?
+                (<View>
+                    <Text>{errors}</Text>
+                </View>) : (
+
+                    <>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.input}
+                                placeholder="enter title"
+                                value={postTitle}
+                                onChangeText={setPostTitle}
+                            />
+                            <TextInput
+                                style={styles.input}
+                                placeholder="enter Body"
+                                value={postBody}
+                                onChangeText={setPostBody}
+                            />
+                            <Button
+                                title={postingState ? "Submiting..." : "Add New Post"}
+                                onPress={addPost}
+                                disabled={postingState}
+                            />
+                        </View>
+                        <View style={styles.listContainer}>
+
+                            <FlatList
+                                data={posts}
+                                renderItem={({ item }) => {
+                                    return (
+                                        <View style={styles.card}>
+                                            <Text style={styles.id}>{item.id}</Text>
+                                            <Text style={styles.titleText}>{item.title}</Text>
+                                            <Text style={styles.bodyText}>{item.body}</Text>
+                                        </View>
+                                    )
+                                }}
+                                ListEmptyComponent={<Text>No Posts Avilable</Text>}
+                                ListHeaderComponent={<Text style={styles.title}>Posts List</Text>}
+                                ListFooterComponent={<Text style={styles.title}>End of posts list</Text>}
+                                ItemSeparatorComponent={() => (
+                                    <View style={{ height: 16 }}></View>
+                                )}
+                                refreshing={refresh}
+                                onRefresh={handleRefresh}
+                            />
+                        </View>
+                    </>
+                )}
+
+
         </>
     )
 }
