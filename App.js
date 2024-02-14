@@ -1,5 +1,5 @@
 import { SafeAreaView, StyleSheet, ScrollView, StatusBar } from "react-native"
-
+import { NavigationContainer } from "@react-navigation/native";
 import PokemonCard from "./components/PokemonCard/PokemonCard";
 import List from "./components/List/List";
 import FList from "./components/FlatList/FList";
@@ -7,6 +7,7 @@ import SList from "./components/SectionList/SList";
 import Input from "./components/Input/Input";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Fetcher from "./components/Fetcher/Fetcher";
+import Navigation from "./components/Navigation/Navigation"
 
 
 export default function App() {
@@ -46,28 +47,16 @@ export default function App() {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
 
-            <Fetcher />
+        <NavigationContainer>
 
-            {/* <LoginForm /> */}
+            <SafeAreaView style={styles.container}>
 
-            {/* <Input /> */}
+                <Navigation />
 
-            {/* <ScrollView>
-                <PokemonCard  {...bulbasorData} />
-                <PokemonCard  {...charmanderData} />
-                <PokemonCard  {...charizardData} />
-                <PokemonCard  {...caterpieData} />
-            </ScrollView> */}
+            </SafeAreaView>
+        </NavigationContainer>
 
-            {/* <List /> */}
-
-            {/* <FList /> */}
-
-            {/* <SList /> */}
-
-        </SafeAreaView>
 
     )
 }
