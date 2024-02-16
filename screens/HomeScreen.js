@@ -11,7 +11,7 @@ export default function HomeScreen({ navigation, route }) {
             <Text style={styles.title}> You are Home Kido! </Text>
             <Text style={styles.title}> {route.params?.updateStatus}</Text>
             <Button title="About" onPress={() => navigation.navigate("About",
-                { name: "Kido! Again" })} />
+                { name: "Kido! Again!!!" })} />
         </View>
     )
 

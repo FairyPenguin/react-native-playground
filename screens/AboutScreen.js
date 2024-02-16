@@ -1,9 +1,15 @@
+import { useLayoutEffect } from "react"
 import { View, Text, StyleSheet, Button } from "react-native"
 
 
 export default function AboutScreen({ navigation, route }) {
 
     const { name } = route.params
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: name
+        }), [navigation, name]
+    })
 
     return (
         <View style={styles.flexContainer}>
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     button: {
         padding: 10,
         borderRadius: 20,
-        backgroundColor: "grey",
+        // backgroundColor: "grey",
         alignItems: "center",
         justifyContent: "center"
     }
