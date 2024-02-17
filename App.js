@@ -8,6 +8,7 @@ import Input from "./components/Input/Input";
 import LoginForm from "./components/LoginForm/LoginForm";
 import Fetcher from "./components/Fetcher/Fetcher";
 import Navigation from "./components/Navigation/Navigation"
+import NavgiationDrawer from "./components/DrawerNavigation/DrawerNavigation";
 
 
 export default function App() {
@@ -52,7 +53,8 @@ export default function App() {
 
             <SafeAreaView style={styles.container}>
 
-                <Navigation />
+                {/* <Navigation /> */}
+                <NavgiationDrawer />
 
             </SafeAreaView>
         </NavigationContainer>
