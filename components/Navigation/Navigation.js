@@ -6,41 +6,47 @@ import AboutScreen from "../../screens/AboutScreen";
 
 const Stack = createNativeStackNavigator()
 
+export const AboutStack = () => {
+    return (
+        <Stack.Navigator initialRouteName="Home" screenOptions={{
+            headerTintColor: "black",
+            headerTitleStyle: { fontWeight: "bold" },
+            headerStyle: {
+                backgroundColor: "grey"
+            },
+            headerRight: () => {
+                return (
+                    <Pressable onPress={() => alert("Choose from the menu Kido")}>
+                        <Text style={{ color: "white", fontSize: 16 }}>Menu</Text>
+                    </Pressable>
+                )
+            },
+            contentStyle: {
+                backgroundColor: "blue"
+            }
+        }}>
+            {/* Home */}
+            <Stack.Screen name="Home" component={HomeScreen} options={{
+                title: "It's Home Kido",
+
+
+            }} />
+            <Stack.Screen
+                name="About"
+                component={AboutScreen}
+                initialParams={{ name: "Kido!!Kido!!" }}
+            // options={({ route }) =>({title:route.params.name})}
+            />
+
+        </Stack.Navigator>
+    )
+}
+
 export default function NewComponent() {
 
     return (
         <View style={styles.flexContainer}>
-            <Stack.Navigator initialRouteName="Home" screenOptions={{
-                headerTintColor: "black",
-                headerTitleStyle: { fontWeight: "bold" },
-                headerStyle: {
-                    backgroundColor: "grey"
-                },
-                headerRight: () => {
-                    return (
-                        <Pressable onPress={() => alert("Choose from the menu Kido")}>
-                            <Text style={{ color: "white", fontSize: 16 }}>Menu</Text>
-                        </Pressable>
-                    )
-                },
-                contentStyle: {
-                    backgroundColor: "blue"
-                }
-            }}>
-                {/* Home */}
-                <Stack.Screen name="Home" component={HomeScreen} options={{
-                    title: "It's Home Kido",
-
-
-                }} />
-                <Stack.Screen
-                    name="About"
-                    component={AboutScreen}
-                    initialParams={{ name: "Kido!!Kido!!" }}
-                // options={({ route }) =>({title:route.params.name})}
-                />
-
-            </Stack.Navigator>
+            <AboutStack />
         </View>
     )
 
